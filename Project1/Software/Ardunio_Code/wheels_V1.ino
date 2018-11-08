@@ -38,15 +38,143 @@ void setup()
   
 }
 
+void demo()
+{
+  testIncrement++;
+    int x ; //movement type: 1 = forward, 2 = backward, 3 = spin left, 4 = spin right, 5 = stop, 6 = right, 7 = left
+    if(testIncrement < 200)
+    {
+      x = 1;
+    }
+    else if(testIncrement>200 && testIncrement < 400)
+    {
+      x=5;
+    }
+    else if(testIncrement > 400 && testIncrement <600)
+    {
+      x=2;
+    }
+    else if(testIncrement > 600 && testIncrement <700)
+    {
+      x=5;
+    }
+    else if(testIncrement > 700 && testIncrement <1000)
+    {
+      x=3;
+    }
+    else if(testIncrement > 1000 && testIncrement <1100)
+    {
+      x=5;
+    }
+    else if(testIncrement > 1100 && testIncrement <1400)
+    {
+      x=4;
+    }
+    else if(testIncrement > 1400 && testIncrement <1500)
+    {
+      x=5;
+    }
+    else if(testIncrement > 1500 && testIncrement <1700)
+    {
+      x=6;
+    }
+    else if(testIncrement > 1700 && testIncrement <1800)
+    {
+      x=5;
+    }
+    else if(testIncrement > 1800 && testIncrement <2000)
+    {
+      x=7;
+    }
+    else
+    {
+      x = 5;
+    }
+   #ifdef DEBUG
+    Serial.print(F("Data passed: "));
+    Serial.print(x);
+    Serial.print(F(", "));
+    #endif
+
+ if ( x == 1)
+  {
+   qik.setSpeeds(127, 127);  // M0, M1 forward
+   // delay(5);
+
+
+  #ifdef DEBUG
+  Serial.print(F("forward    "));
+  #endif
+  }
+  else if (x == 2)
+  {
+   qik.setSpeeds(-127, -127);  // M0, M1 backward
+   //delay(5);
+   
+  #ifdef DEBUG
+  Serial.print(F("backward    "));
+  #endif
+  }
+  else if (x == 3)
+  {
+    qik.setSpeeds(127, -127);  // M0, M1 spin right
+   //delay(5);
+
+   #ifdef DEBUG
+  Serial.print(F("Spin Right    "));
+  #endif
+  }
+  else if (x == 4)
+  {
+   qik.setSpeeds(-127, 127);  // M0, M1 spin left
+   //delay(5);
+   
+  #ifdef DEBUG
+  Serial.print(F("Spin Left    "));
+  #endif
+  }
+   else if (x == 5)
+  {
+   
+  qik.setSpeeds(0, 0);
+  //delay(5);
+  
+  #ifdef DEBUG
+  Serial.print(F("Stop    "));
+  #endif
+  }
+  else if (x == 6)
+  {
+   
+  qik.setSpeeds(127, -127);
+  //delay(5);
+  
+  #ifdef DEBUG
+  Serial.print(F("Right    "));
+  #endif
+  }
+  else if (x == 7)
+  {
+   
+  qik.setSpeeds(-127, 127);
+  //delay(5);
+  
+  #ifdef DEBUG
+  Serial.print(F("left    "));
+  #endif
+  }
+}
+
 void loop()
 {
-  rstop();
+    rstop();
   #ifdef DEBUG
   Serial.print("STARTING MAIN LOOP AND test is: ");
   Serial.print(testIncrement);
   Serial.print("\n");
   #endif
-if ( testIncrement == 0)
+  demo ();
+/*if ( testIncrement == 0)
   {
     #ifdef DEBUG
   Serial.print("INSIDE IF STATEMENT AND test is: ");
@@ -77,13 +205,13 @@ if ( testIncrement == 0)
           delay (S_DELAY);
           rstop ();
           delay (S_DELAY);
-    testIncrement = 1;   
+    testIncrement = 1;   */
     #ifdef DEBUG
   Serial.print("FINISHED IF STATEMENT AND test is: ");
   Serial.print(testIncrement);
   Serial.print("\n");
   #endif   
-  }
+  
 /*
   //wheel test code, do not place the bot on the ground for this. This is just to test if all four wheels are functional
    for (int i = 0; i <= 127; i++) 
@@ -122,134 +250,7 @@ if ( testIncrement == 0)
     qik.setM1Speed(i);
     delay(5);
   }
-  
-    testIncrement++;
-    int x ; //movement type: 1 = forward, 2 = backward, 3 = spin left, 4 = spin right, 5 = stop, 6 = right, 7 = left
-    
-    if(testIncrement < 200)
-    {
-      x = 1;
-    }
-    else if(testIncrement>200 && testIncrement < 400)
-    {
-      x=5;
-    }
-    else if(testIncrement > 400 && testIncrement < 600)
-    {
-      x = 2;
-    }
-    else if(testIncrement > 600 && testIncrement < 800)
-    {
-      x=5;
-    }
-    else if(testIncrement > 800 && testIncrement < 1200)
-    {
-      x=3;
-    }
-    else if(testIncrement > 1200 && testIncrement <1400)
-    {
-      x=5;
-    }
-    else if(testIncrement > 1400 && testIncrement < 1800)
-    {
-      x=4;
-    }
-    else if(testIncrement > 1800 && testIncrement < 2000)
-    {
-      x=5;
-    }
-    else if(testIncrement > 2000 && testIncrement < 2150)
-    {
-      x=3;
-    }
-    else if(testIncrement > 2150 && testIncrement < 2350)
-    {
-      x=5;
-    }
-    else if(testIncrement > 2350 && testIncrement <2500)
-    {
-      x=4;
-    }
-    else
-    {
-      x = 5;
-    }
-   #ifdef DEBUG
-    Serial.print(F("Data passed: "));
-    Serial.print(x);
-    Serial.print(F(", "));
-    #endif
-
- if ( x == 1)
-  {
-   qik.setSpeeds(100, 100);  // M0, M1 forward
-   delay(5);
-
-
-  #ifdef DEBUG
-  Serial.print(F("forward    "));
-  #endif
-  }
-  else if (x == 2)
-  {
-   qik.setSpeeds(-100, -100);  // M0, M1 backward
-   delay(5);
-   
-  #ifdef DEBUG
-  Serial.print(F("backward    "));
-  #endif
-  }
-  else if (x == 3)
-  {
-    qik.setSpeeds(127, -127);  // M0, M1 spin right
-   delay(5);
-
-   #ifdef DEBUG
-  Serial.print(F("Spin Right    "));
-  #endif
-  }
-  else if (x == 4)
-  {
-   qik.setSpeeds(-127, 127);  // M0, M1 spin left
-   delay(5);
-   
-  #ifdef DEBUG
-  Serial.print(F("Spin Left    "));
-  #endif
-  }
-   else if (x == 5)
-  {
-   
-  qik.setSpeeds(0, 0);
-  delay(5);
-  
-  #ifdef DEBUG
-  Serial.print(F("Stop    "));
-  #endif
-  }
-  /*else if (x == 6)
-  {
-   
-  qik.setSpeeds(127, -127);
-  delay(5);
-  
-  #ifdef DEBUG
-  Serial.print(F("Right    "));
-  #endif
-  }
-  else if (x == 7)
-  {
-   
-  qik.setSpeeds(-127, 127);
-  delay(5);
-  
-  #ifdef DEBUG
-  Serial.print(F("left    "));
-  #endif
-  }
   */
-    
-  
   // check for errors
   int qikError = qik.getErrors();
   if((qikError & 248) > 0)  // check for errors
