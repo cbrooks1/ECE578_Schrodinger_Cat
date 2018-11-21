@@ -63,15 +63,15 @@ https://github.com/cbrooks1/ECE578_Schrodinger_Cat/tree/master/Project1
 .
 
 # Project Team :
--Text to Speech – Chelsea
+-Text to Speech – Chelsea Brooks
 
--Face and Object Detection - Rakhee
+-Face and Object Detection - Rakhee Bhojakar
 
--Servos and Arduino Code - Jamie
+-Servos and Arduino Code - Jamie Williams
 
 -Omni Wheels -  Dhakshayini Koppad
 
--3D Printing/Screen Face - Erik
+-3D Printing/Screen Face - Erik Fox
 
 
 
