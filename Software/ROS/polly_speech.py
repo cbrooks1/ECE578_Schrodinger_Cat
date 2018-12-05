@@ -11,8 +11,8 @@ import boto3
 from pygame import mixer
 
 polly_client = boto3.Session(
-	aws_access_key_id="AKIAJ5URJV74OG537KAQ",                     
-	aws_secret_access_key="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",
+	aws_access_key_id="ask chelsea",                     
+	aws_secret_access_key="ask chelsea",
 	region_name='us-west-2').client('polly')
 
 mixer.init()
