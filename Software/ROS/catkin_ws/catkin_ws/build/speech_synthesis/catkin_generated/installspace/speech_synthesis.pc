@@ -1,0 +1,8 @@
+prefix=/home/chelsea/catkin_ws/install
+
+Name: speech_synthesis
+Description: Description of speech_synthesis
+Version: 0.0.0
+Cflags: -I/home/chelsea/catkin_ws/install/include
+Libs: -L/home/chelsea/catkin_ws/install/lib 
+Requires: 

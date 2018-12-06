@@ -1,0 +1,8 @@
+prefix=/home/chelsea/catkin_ws/devel
+
+Name: script_recognition
+Description: Description of script_recognition
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/chelsea/catkin_ws/devel/lib 
+Requires: 

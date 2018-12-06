@@ -1,0 +1,6 @@
+<!-- -*- mode: XML -*- -->
+
+<launch>
+    <node name="recognition.py" pkg="voice_recognition" type="recognition.py" required="true" output="screen" cwd="node">
+    </node>
+</launch>

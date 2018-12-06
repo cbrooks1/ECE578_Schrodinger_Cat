@@ -1,0 +1,8 @@
+prefix=/home/chelsea/catkin_ws/install
+
+Name: voice_recognition
+Description: Description of voice_recognition
+Version: 0.0.1
+Cflags: 
+Libs: -L/home/chelsea/catkin_ws/install/lib 
+Requires: 

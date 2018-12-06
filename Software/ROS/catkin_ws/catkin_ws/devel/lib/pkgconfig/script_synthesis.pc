@@ -1,0 +1,8 @@
+prefix=/home/chelsea/catkin_ws/devel
+
+Name: script_synthesis
+Description: Description of script_synthesis
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/chelsea/catkin_ws/devel/lib 
+Requires: 

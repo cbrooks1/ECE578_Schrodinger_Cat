@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+
+
 # Service Requests
 # /phrase - String
 #
@@ -10,22 +12,22 @@ import rospy
 import boto3
 from pygame import mixer
 
-polly_client = boto3.Session(
-	aws_access_key_id="ask chelsea",                     
-	aws_secret_access_key="ask chelsea",
-	region_name='us-west-2').client('polly')
 
 mixer.init()
 
 def handle_speech_synthesis(req):
-	response = polly_client.synthesize_speech(VoiceId='Ivy',
-				OutputFormat='mp3', 
-				Text = str(req))
-	file = open('speech.mp3', 'w')
-	file.write(response['AudioStream'].read())
-	file.close()
-	mixer.music.load('speech.mp3')
+
+	mixer.music.load('line1.mp3')
 	mixer.music.play()
+	rospy.loginfo(str(req))
+
+	mixer.music.load('line2.mp3')
+	mixer.music.play()
+	rospy.loginfo(str(req)
+
+	mixer.music.load('line3.mp3')
+	mixer.music.play()
+	rospy.loginfo(str(req))
 	return 1
 	
 def speech_synthesis_server():

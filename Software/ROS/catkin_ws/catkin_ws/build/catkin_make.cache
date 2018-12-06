@@ -1,0 +1,2 @@
+script_recognition:script_synthesis:speech_synthesis:voice_recognition
+-DCATKIN_DEVEL_PREFIX=/home/chelsea/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/chelsea/catkin_ws/install -G Unix Makefiles

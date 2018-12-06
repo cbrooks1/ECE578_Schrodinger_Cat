@@ -1,0 +1,10 @@
+(cl:defpackage speech_synthesis-srv
+  (:use )
+  (:export
+   "SYNTHESIS_SERVICE"
+   "<SYNTHESIS_SERVICE-REQUEST>"
+   "SYNTHESIS_SERVICE-REQUEST"
+   "<SYNTHESIS_SERVICE-RESPONSE>"
+   "SYNTHESIS_SERVICE-RESPONSE"
+  ))
+
