@@ -5,6 +5,8 @@ from std_msgs.msg import Int32
 from std_msgs.msg import String
 import time
 import sys
+from pyfirmata import Arduino, util
+board = Arduino('/dev/ttyUSB0')
 
 global motion_command
 global pubMotion_Command
@@ -28,25 +30,37 @@ def robot_wheels():
 
     if motion_command in motion_commandList:
         if motion_command == "Go_Forward":
-            motion_out = 1
+            pin2 = board.getpin('d:2:o')
+            pin2.write(1)
             print ("-I am moving forward")
+        
+        if motion_command == "Go_Backward":
+            pin3 = board.getpin('d:3:o')
+            pin3.write(1)
+            print ("-I am moving forward")
+        
         if motion_command == "Turn_left":
-            motion_out = 2
+            pin4 = board.getpin('d:4:o')
+            pin4.write(1)
             print ("-I am Turning Let")
+        
         if motion_command == "Turn_right"
-            motion_out = 3;
+            pin5 = board.getpin('d:5:o')
+            pin5.write(1)
             print ("-I am Turning right")
+        
         if motion_command == "Stop"
-            motion_out = 4
+            pin6 = board.getpin('d:6:o')
+            pin6.write(1)
             print ("-I stopped")
         else:
-            print ("unknown comman!!)
-
+            print ("unknown command!!)
+    """
     while not rospy.is_shutdown():
         pubmotion.publish(motion_out)
     rate.sleep()
     rospy.spin()
-
+    """
 if __name__ == '__main__':
 	print("Schrodingers Cat")
 	try:
