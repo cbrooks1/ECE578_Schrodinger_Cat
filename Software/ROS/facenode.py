@@ -32,7 +32,7 @@ cv2.setWindowProperty(window_name, cv2.WND_PROP_FULLSCREEN,cv2.WINDOW_FULLSCREEN
 
 #Callback funtions to take data that node is subscribed to and assign it to global variables
 def callback1(data):
-	global image1, image2, image3, image4, image5, image6, image7, image8
+	global image1, image2, image3, image4, image5, image6, image7, image8, window_name
 	if data.data==1:
 		cv2.imshow(window_name, image1)
 	elif data.data<130:
