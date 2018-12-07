@@ -26,7 +26,7 @@ motion_commandList = ["Go_Forward","Go_Backward","Turn_Left","Turn_Right","Stop"
 #pubmotion = rospy.Publisher('motion_out',Int32, queue_size=1)
 
 def callback0(data):
-    motion_out = data.data
+    motion_command = data.data
 
 
 def robot_wheels():
