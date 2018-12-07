@@ -4,37 +4,49 @@ import rospy
 from std_msgs.msg import String
 
 #initialize Global Variables
-wheel_command='Stop'
-servo_command='Neutral'
+wheel='Stop'
+servo='Neutral'
 
 #Publisher Nodes
 #"Go_Forward","Go_Backward","Turn_Left","Turn_Right","Stop"
 def mcommand_talker():
-	global motion_command
+	global wheel
 	#set up node as publisher
 	pub=rospy.Publisher('motion_command',String,queue_size=10)
 
 	
 	#publish next command
 	rate=rospy.Rate(.2)
-	pub.publish(wheel_command)
+	pub.publish(wheel)
 	rate.sleep()
 
 #"Wave","Point","No","Neutral","Arms_up"
-def ():
-	global servo_command
+def scommand_talker():
+	global servo
 	#set up node as publisher
-	pub=rospy.Publisher('',String,queue_size=10)
+	pub=rospy.Publisher('servo_command',String,queue_size=10)
 
 	
 	#publish next command
 	rate=rospy.Rate(.2)
-	pub.publish(servo_command)
+	pub.publish(servo)
 	rate.sleep()
 
 #Main: Play Director fuction: controls the actions of our robot in correct 
 def director():
+	global wheel, servo
 	rospy.init_node('director', anonymous=True)
+	servo='Wave'
+	wheel='Go_Forward'
+	mcommand_talker()
+	sleep(1)
+	wheel='Stop'
+	mcommand_talker()
+	scommand_talker()
+	sleep(2)
+	servo='Neutral'
+	scommand_talker()
+	sleep(10)
 	
 
 	
