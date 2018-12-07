@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 import rospy
 from std_msgs.msg import Int32
 from std_msgs.msg import String
@@ -53,8 +51,8 @@ def robot_wheels():
             p6.off()
             p7.off()
             p8.off()
-            p9.on()
             p12.off()
+            p9.on()
             sleep(1)
             print ("-I am moving forward")
         
@@ -62,29 +60,29 @@ def robot_wheels():
             p5.off()
             p6.off()
             p7.off()
-            p8.on()
             p9.off()
             p12.off()
+            p8.on()
             sleep(1)
             print ("-I am Turning Let")
         
         if motion_command == "Turn_right":
             p5.off()
             p6.off()
-            p7.on()
             p8.off()
             p9.off()
             p12.off()
+            p7.on()
             sleep(1)
             print ("-I am Turning right")
         
         if motion_command == "Stop":
             p5.off()
-            p6.on()
             p7.off()
             p8.off()
             p9.off()
             p12.off()
+            p6.on()
             sleep(1)
             print ("-I stopped")
         
