@@ -35,9 +35,9 @@ def callback1(data):
 	global image1, image2, image3, image4, image5, image6, image7, image8
 	if data.data==1:
 		cv2.imshow(window_name, image1)
-	elif data.data==2:
+	elif data.data<130:
 		cv2.imshow(window_name, image2)
-	elif data.data==3:
+	elif data.data>130:
 		cv2.imshow(window_name, image3)
 	elif data.data==4:
 		cv2.imshow(window_name, image4)
@@ -50,7 +50,7 @@ def callback1(data):
 	elif data.data==8:
 		cv2.imshow(window_name, image8)
 	else:
-		cv2.imshow(window_name, image4)
+		cv2.imshow(window_name, image6)
 	
 
 def listener():
