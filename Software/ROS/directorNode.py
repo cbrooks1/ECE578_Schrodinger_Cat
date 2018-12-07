@@ -47,8 +47,26 @@ def director():
 	servo='Neutral'
 	scommand_talker()
 	sleep(10)
-	
-
+	servo='Point'
+	wheel='Go_Back'
+	mcommand_talker()
+	sleep(1)
+	wheel='Stop'
+	mcommand_talker()
+	scommand_talker()
+	sleep(5)
+	servo='Neutral'
+	scommand_talker()
+	sleep(30)
+	wheel='Turn_Right'
+	mcommand_talker()
+	sleep(7)
+	wheel='Turn_Left'
+	mcommand_talker()
+	sleep(7)
+	wheel='Stop'
+	mcommand_talker()
+	sleep(37)
 	
 if __name__=='__main__':
 	try:
