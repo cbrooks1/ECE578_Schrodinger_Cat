@@ -1,12 +1,10 @@
 #!/usr/bin/env python
 #Schrodinger's Cat Robot: Main Node
 import rospy
-from std_msgs.msg import Int32
-from std_msgs.msg import Float32
 from std_msgs.msg import String
 
 #initialize Global Variables
-motion_command='Stop'
+wheel_command='Stop'
 servo_command='Neutral'
 
 #Publisher Nodes
@@ -19,7 +17,7 @@ def mcommand_talker():
 	
 	#publish next command
 	rate=rospy.Rate(.2)
-	pub.publish(motion_command)
+	pub.publish(wheel_command)
 	rate.sleep()
 
 #"Wave","Point","No","Neutral","Arms_up"
@@ -31,7 +29,7 @@ def ():
 	
 	#publish next command
 	rate=rospy.Rate(.2)
-	pub.publish()
+	pub.publish(servo_command)
 	rate.sleep()
 
 #Main: Play Director fuction: controls the actions of our robot in correct 
