@@ -13,7 +13,7 @@ global pubMotion_Command
 global motion_out
 motion_commandList = ["Go_Forward","Turn_Left","Turn_Right","Stop"]
 
-pubmotion = rospy.Publisher('motion_out',Int32, queue_size=1)
+#pubmotion = rospy.Publisher('motion_out',Int32, queue_size=1)
 
 def callback0(data)
     motion_out = data.data
