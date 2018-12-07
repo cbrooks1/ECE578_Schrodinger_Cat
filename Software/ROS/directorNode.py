@@ -20,6 +20,7 @@ def mcommand_talker():
 	pub.publish(motion_command)
 	rate.sleep()
 
+#"Wave","Point","No","Neutral","Arms_up"
 def ():
 	global motion_command
 	#set up node as publisher
