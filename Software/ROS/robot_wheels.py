@@ -6,19 +6,19 @@ from std_msgs.msg import String
 from time import sleep
 import sys
 
-from gpiozero import pin12
-from gpiozero import pin9
-from gpiozero import pin8
-from gpiozero import pin7
-from gpiozero import pin6
-from gpiozero import pin5
+from gpiozero import LED as gpiopin
+#from gpiozero import pin9
+#from gpiozero import pin8
+#from gpiozero import pin7
+#from gpiozero import pin6
+#from gpiozero import pin5
 
-p12 = pin12(12)
-p9 = pin9(9)
-p8 = pin8(8)
-p7 = pin7(7)
-p6 = pin6(6)
-p5 = pin5(5)
+p12 = gpiopin(12)
+p9 = gpiopin(9)
+p8 = gpiopin(8)
+p7 = gpiopin(7)
+p6 = gpiopin(6)
+p5 = gpiopin(5)
 
 global motion_command
 global pubMotion_Command
@@ -39,32 +39,62 @@ def robot_wheels():
 
     if motion_command in motion_commandList:
         if motion_command == "Go_Forward":
+            p5.off()
+            p6.off()
+            p7.off()
+            p8.off()
+            p9.off()
             p12.on()
             sleep(1)
             print ("-I am moving forward")
         
         if motion_command == "Go_Backward":
+            p5.off()
+            p6.off()
+            p7.off()
+            p8.off()
             p9.on()
+            p12.off()
             sleep(1)
             print ("-I am moving forward")
         
         if motion_command == "Turn_left":
+            p5.off()
+            p6.off()
+            p7.off()
             p8.on()
+            p9.off()
+            p12.off()
             sleep(1)
             print ("-I am Turning Let")
         
         if motion_command == "Turn_right":
+            p5.off()
+            p6.off()
             p7.on()
+            p8.off()
+            p9.off()
+            p12.off()
             sleep(1)
             print ("-I am Turning right")
         
         if motion_command == "Stop":
+            p5.off()
             p6.on()
+            p7.off()
+            p8.off()
+            p9.off()
+            p12.off()
             sleep(1)
             print ("-I stopped")
         
         if motion_command == "Demo":
             p5.on()
+            p6.off()
+            p7.off()
+            p8.off()
+            p9.off()
+            p12.off()
             sleep(1)
             print ("Demo mode is on")
         else:
