@@ -8,8 +8,8 @@ from std_msgs.msg import String
 #initialize Global Variables
 face_command=
 image_command=
-motion_command=
-mfeedback_command=
+motion_command='Stop'
+#mfeedback_command=
 
 #Callback funtions
 def callback1(data):
@@ -50,16 +50,16 @@ def mcommand_talker():
 	pub.publish(motion_command)
 	rate.sleep()
 
-def mfeedback_talker():
-	global mfeedback_command
+#def mfeedback_talker():
+#	global mfeedback_command
 	#set up node as publisher
-	pub=rospy.Publisher('motion_feedback',String,queue_size=10)
+#	pub=rospy.Publisher('motion_feedback',String,queue_size=10)
 
 	
 	#publish next command
-	rate=rospy.Rate(.2)
-	pub.publish(mfeedback_command)
-	rate.sleep()
+#	rate=rospy.Rate(.2)
+#	pub.publish(mfeedback_command)
+#	rate.sleep()
 
 	
 #suscriber nodes: Do we need this? Can we just use a director function and publish what we want to happen
