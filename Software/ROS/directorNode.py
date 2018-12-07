@@ -7,8 +7,10 @@ from std_msgs.msg import String
 
 #initialize Global Variables
 motion_command='Stop'
+servo_command='Neutral'
 
 #Publisher Nodes
+#"Go_Forward","Go_Backward","Turn_Left","Turn_Right","Stop"
 def mcommand_talker():
 	global motion_command
 	#set up node as publisher
@@ -22,7 +24,7 @@ def mcommand_talker():
 
 #"Wave","Point","No","Neutral","Arms_up"
 def ():
-	global motion_command
+	global servo_command
 	#set up node as publisher
 	pub=rospy.Publisher('',String,queue_size=10)
 
