@@ -12,6 +12,8 @@ Digital Pin 4 - RESET
 
 #include <SoftwareSerial.h>
 #include <PololuQik.h>
+#include <Firmata.h>
+
 
 #define QIK1_ID 9
 #define QIK2_ID 9
@@ -25,6 +27,11 @@ Digital Pin 4 - RESET
 PololuQik2s9v1 qik(QIK_TX, QIK_RX, QIK_RESET);
 
 int testIncrement = 0;
+int fwd = 2;
+int bkd = 3;
+int lef = 4;
+int rite = 5;
+int stp = 6;
 void setup()
 {
   Serial.begin(115200);
@@ -35,6 +42,12 @@ void setup()
   Serial.print("Firmware version: ");
   Serial.write(qik.getFirmwareVersion());
   Serial.println();
+
+  pinMode(fwd, INPUT);
+  pinMode(bkd, INPUT);
+  pinMode(lef, INPUT);
+  pinMode(rite, INPUT);
+  pinMode(stp, INPUT);
   
 }
 
@@ -173,39 +186,35 @@ void loop()
   Serial.print(testIncrement);
   Serial.print("\n");
   #endif
-  demo ();
-/*if ( testIncrement == 0)
-  {
-    #ifdef DEBUG
-  Serial.print("INSIDE IF STATEMENT AND test is: ");
-  Serial.print(testIncrement);
-  Serial.print("\n");
-  #endif
+        demo ();
+  
+       if (digitalRead(fwd) == 1)
           forward ();
-          delay (S_DELAY);
-          rstop ();
-          delay (S_DELAY);
+          //delay (S_DELAY);
+          //rstop ();
+
+       else if (digitalRead(bkd) == 1)
+          //delay (S_DELAY)
           backward ();
-          delay (S_DELAY);
-          rstop ();
-          delay (S_DELAY);
+          //delay (S_DELAY);
+          //rstop ();
+
+       else if (digitalRead(rite) == 1)
+          //delay (S_DELAY);
           right ();
-          delay (L_DELAY);
-          rstop ();
-          delay (S_DELAY);
+          //delay (L_DELAY);
+          //rstop ();
+
+       else if (digitalRead(lef) == 1)
+          //delay (S_DELAY);
           left ();
-          delay (L_DELAY);
+          //delay (L_DELAY);
+         // rstop ();
+
+       else if (digitalRead(stp) == 1)
           rstop ();
-          delay (S_DELAY);
-          right ();
-          delay (S_DELAY);
-          rstop ();
-          delay (S_DELAY);
-          left ();
-          delay (S_DELAY);
-          rstop ();
-          delay (S_DELAY);
-    testIncrement = 1;   */
+          
+    //testIncrement = 1;
     #ifdef DEBUG
   Serial.print("FINISHED IF STATEMENT AND test is: ");
   Serial.print(testIncrement);
