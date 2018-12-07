@@ -55,7 +55,7 @@ def callback1(data):
 
 def listener():
 	#Set up node
-	rospy.init_node('listener', anonymous=True)
+	rospy.init_node('face_listener', anonymous=True)
 	
 	#suscribe node to the sensor's topics
 	rospy.Subscriber('face', Int32,callback1) 
