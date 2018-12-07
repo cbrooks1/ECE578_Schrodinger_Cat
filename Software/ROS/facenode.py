@@ -58,7 +58,7 @@ def listener():
 	rospy.init_node('face_listener', anonymous=True)
 	
 	#suscribe node to the sensor's topics
-	rospy.Subscriber('face', Int32,callback1) 
+	rospy.Subscriber('coordinates', Int32,callback1) 
 	rospy.spin()
 if __name__=='__main__':
 	try:
