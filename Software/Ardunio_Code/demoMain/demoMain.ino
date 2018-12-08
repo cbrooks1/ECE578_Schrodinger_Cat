@@ -179,8 +179,8 @@ void loop() {
   #endif 
 
   // If defined Pi as connected, run Serial code
-  isPiConnected = digitalRead(PI_CONNECTED_PIN);
-
+  //isPiConnected = digitalRead(PI_CONNECTED_PIN);
+  isPiConnected = 0;
   #ifdef SERIAL_DEBUG
   Serial.print("CHECKED PI CONNECTED PIN A0. VALUE IS: ");
   Serial.print(isPiConnected);
