@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 #Schrodinger's Cat Robot: Main Node
 import rospy
+
 from std_msgs.msg import String
 
 #initialize Global Variables
@@ -36,37 +37,43 @@ def scommand_talker():
 def director():
 	global wheel, servo
 	rospy.init_node('director', anonymous=True)
+	rospy.sleep(10)
 	servo='Wave'
 	wheel='Go_Forward'
 	mcommand_talker()
-	sleep(1)
+	mcommand_talker()
+	print('goforward')
+	rospy.sleep(1)
 	wheel='Stop'
 	mcommand_talker()
 	scommand_talker()
-	sleep(2)
+	rospy.sleep(2)
 	servo='Neutral'
 	scommand_talker()
-	sleep(10)
+	rospy.sleep(10)
 	servo='Point'
 	wheel='Go_Back'
+	print('Go back')
 	mcommand_talker()
-	sleep(1)
+	rospy.sleep(1)
 	wheel='Stop'
 	mcommand_talker()
 	scommand_talker()
-	sleep(5)
+	rospy.sleep(5)
 	servo='Neutral'
 	scommand_talker()
-	sleep(30)
+	rospy.sleep(30)
 	wheel='Turn_Right'
+	print('turn right')
 	mcommand_talker()
-	sleep(7)
+	rospy.sleep(7)
 	wheel='Turn_Left'
 	mcommand_talker()
-	sleep(7)
+	rospy.sleep(7)
 	wheel='Stop'
 	mcommand_talker()
-	sleep(37)
+	rospy.sleep(37)
+	rospy.spin()
 	
 if __name__=='__main__':
 	try:
