@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 #Schrodinger's Cat Robot: Main Node
 import rospy
-
+from std_msgs.msg import Int32
 from std_msgs.msg import String
 
 #initialize Global Variables
@@ -12,67 +12,33 @@ servo='Neutral'
 #"Go_Forward","Go_Backward","Turn_Left","Turn_Right","Stop"
 def mcommand_talker():
 	global wheel
+	print('in talker')
 	#set up node as publisher
-	pub=rospy.Publisher('motion_command',String,queue_size=10)
-
-	
+	pub=rospy.Publisher('/motion_command',String,queue_size=10)
 	#publish next command
-	rate=rospy.Rate(.2)
+	rate=rospy.Rate(5)
 	pub.publish(wheel)
+	print('published')
 	rate.sleep()
 
-#"Wave","Point","No","Neutral","Arms_up"
-def scommand_talker():
-	global servo
-	#set up node as publisher
-	pub=rospy.Publisher('servo_command',String,queue_size=10)
 
-	
-	#publish next command
-	rate=rospy.Rate(.2)
-	pub.publish(servo)
-	rate.sleep()
 
-#Main: Play Director fuction: controls the actions of our robot in correct 
+##Main: Play Director fuction: controls the actions of our robot in correct 
 def director():
-	global wheel, servo
-	rospy.init_node('director', anonymous=True)
-	rospy.sleep(10)
-	servo='Wave'
-	wheel='Go_Forward'
+	global wheel
+        x=0
+        rospy.init_node('director', anonymous=True)
+        wheel="Go_Forward"
 	mcommand_talker()
-	mcommand_talker()
-	print('goforward')
-	rospy.sleep(1)
-	wheel='Stop'
-	mcommand_talker()
-	scommand_talker()
-	rospy.sleep(2)
-	servo='Neutral'
-	scommand_talker()
-	rospy.sleep(10)
-	servo='Point'
-	wheel='Go_Back'
-	print('Go back')
-	mcommand_talker()
-	rospy.sleep(1)
-	wheel='Stop'
-	mcommand_talker()
-	scommand_talker()
-	rospy.sleep(5)
-	servo='Neutral'
-	scommand_talker()
-	rospy.sleep(30)
-	wheel='Turn_Right'
-	print('turn right')
-	mcommand_talker()
-	rospy.sleep(7)
-	wheel='Turn_Left'
-	mcommand_talker()
-	rospy.sleep(7)
-	wheel='Stop'
-	mcommand_talker()
-	rospy.sleep(37)
+	while x!=1000:
+            x=x+1
+            mcommand_talker()
+        wheel="Stop"
+        mcommand_talker()
+        wheel="Stop"
+        mcommand_talker()
+        wheel="Turn_Left"
+        mcommand_talker()
 	rospy.spin()
 	
 if __name__=='__main__':
