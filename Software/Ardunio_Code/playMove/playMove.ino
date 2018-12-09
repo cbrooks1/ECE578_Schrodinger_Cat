@@ -35,7 +35,7 @@ SoftwareSerial maestroSerial(10, 11);
 #define PI_CONNECTED_PIN A0
 #define CHANNEL_NUMBER 12 // Channel number used to talk to maestro
 #define RESET_PIN 13 // Pin on Arduino used to talk to maestro
-#define DELAY 2000 // Define standard delay
+#define DELAY 1500 // Define standard delay
 
 // Define statements for servo control
 #define NUM_CHANNELS 18 // Number of servo channels used on the maestro
@@ -48,11 +48,16 @@ SoftwareSerial maestroSerial(10, 11);
 #define QIK_RESET 4
 //#define DEBUG
 #define SPIN_DELAY 100
-#define S_DELAY 200
-#define L_DELAY 500
+int small = 200;
+int medium = 500;
+int spin = 3000;
 
 PololuQik2s9v1 qik(QIK_TX, QIK_RX, QIK_RESET);
 int testIncrement = 0;
+
+String inputString = "";         // a String to hold incoming data
+bool stringComplete = false;  // whether the string is complete
+
 
 // Define statements for servo positions
 // *****************************************
@@ -142,6 +147,7 @@ MiniMaestro maestro(maestroSerial, RESET_PIN, CHANNEL_NUMBER, false);
 // Local variables
 int isPiConnected;
 int piCommand;
+int x = 1;
 
 void setup() {
   // Set up serial communications
@@ -159,6 +165,12 @@ void setup() {
   #ifdef SERIAL_DEBUG
   Serial.print("STARTING SETUP PROCESS\n");
   #endif
+  Serial.println("qik 2s9v1 dual serial motor controller");
+
+   qik.init();
+  Serial.print("Firmware version: ");
+  Serial.write(qik.getFirmwareVersion());
+  Serial.println();
   // Define PI Connected pin (A0)
   //pinMode(PI_CONNECTED_PIN, INPUT);
   
@@ -174,6 +186,20 @@ void setup() {
   
 }
 
+void serialEvent() {
+  while (Serial.available()) {
+    // get the new byte:
+    char inChar = (char)Serial.read();
+    // add it to the inputString:
+    inputString += inChar;
+    // if the incoming character is a newline, set a flag so the main loop can
+    // do something about it:
+    if (inChar == '\n') {
+      stringComplete = true;
+    }
+  }
+ }
+
 // *****************************************
 // MAIN LOOP
 // *****************************************
@@ -181,27 +207,47 @@ void loop() {
   #ifdef SERIAL_DEBUG
   Serial.print("STARTING MAIN LOOP\n");
   #endif 
-
+/*
   int doLoop = 1;
-
+  
+  // print the string when a newline arrives:
+  if (stringComplete) {
+    Serial.println(inputString);
+    // clear the string:
+    inputString = "";
+    stringComplete = false;
+  }
+ 
+  Serial.print(x);
   //initialPositions();
   releaseServos();
   //delay(DELAY/4);
+  
+  if(x) {
+   #ifdef SERIAL_DEBUG
+  Serial.print("Started WHEEL DEMO\n");
+  #endif 
+   delay(DELAY);
+    basicWaveRight();
+    delay(DELAY/2);
+    releaseServos();
+    delay(DELAY/2);
 
+    x = 0;
+    Serial.print(x);
+
+  #ifdef SERIAL_DEBUG
+  Serial.print("Started WHEEL DEMO\n");
+  #endif 
+  }
+ 
   if(doLoop) {
 
     //initialPositions();
     //demo();
     #ifdef SERIAL_DEBUG
-  Serial.print("FINISHED WHEEL DEMO\n");
+  Serial.print(" Starting hand movements DEMO\n");
   #endif 
-    /*
-    left();
-    delay(SPIN_DELAY);
-    rstop();
-    */
-    delay(DELAY);
-    basicWaveRight();
     delay(DELAY/2);
     releaseServos();
     delay(DELAY/2);
@@ -210,24 +256,49 @@ void loop() {
     releaseServos();
     delay(DELAY/2);
     negativeWave();
-    delay(DELAY);
+    delay(DELAY/2);
     releaseServos();
+    delay(DELAY/2);
     
-    delay(DELAY);
-    delay(DELAY);
-    /*
     delay(SPIN_DELAY);
     right();
     delay(SPIN_DELAY);
     rstop();
     delay(SPIN_DELAY);
-    */
-
+    */ 
+  #ifdef SERIAL_DEBUG
+  Serial.print(" Finished hand movements DEMO\n");
+  #endif 
   }
+  
 
-
-
-
+  if (stringComplete){
+    if (inputString = "f"){
+      forward();
+      delay(small);
+    }
+    else if (inputString = "b"){
+      backward();
+      delay(small);
+    }
+    else if (inputString = "r"){
+      right();
+      delay(small);
+    }
+    else if (inputString = "l"){
+      left();
+      delay(small);
+    }
+     else if (inputString = "s"){
+      rstop();
+      delay(small);
+    }
+    else if (inputString = "d"){
+      demo();
+      delay(small);
+    }
+    }
+    inputString = "";
 
 } // END OF MAIN LOOP
 
