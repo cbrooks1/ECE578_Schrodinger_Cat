@@ -2,12 +2,12 @@
 <package format="2">
   <name>speech_synthesis</name>
   <version>0.0.0</version>
-  <description>The speech_synthesis package</description>
+  <description>speech_synthesis package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->
   <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
-  <maintainer email="scom2@pdx.edu">scmatsu</maintainer>
+  <maintainer email="cbrooks@pdx.edu">Chelsea Brooks</maintainer>
 
 
   <!-- One license tag required, multiple allowed, one license per tag -->

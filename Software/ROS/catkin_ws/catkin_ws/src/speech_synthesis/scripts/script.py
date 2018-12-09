@@ -24,20 +24,6 @@ line_num = 1
 
 mixer.init()
 
-def line_number():
-	global line_num
-
-	if line_num == 1:
-		mixer.music.load('line1.mp3')
-		mixer.music.play()
-		print("line 1")
-		rospy.sleep(13)
-	elif line_num == 2:
-		mixer.music.load('line2.mp3')
-		mixer.music.play()
-		print("line 2")
-		rospy.sleep(10)
-	return 1
 	
 def speech_synthesis_server():
 	rospy.init_node('speech_synthesis_server')
