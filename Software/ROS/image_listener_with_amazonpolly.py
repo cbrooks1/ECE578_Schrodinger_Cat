@@ -1,13 +1,5 @@
 #! /usr/bin/python
-
-
-# Using this CvBridge Tutorial for converting
-# ROS images to OpenCV2 images
-# http://wiki.ros.org/cv_bridge/Tutorials/ConvertingBetweenROSImagesAndOpenCVImagesPython
-
-# Using this OpenCV2 tutorial for saving Images:
-# http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_gui/py_image_display/py_image_display.html
-
+# ros node to detect robot and speak using amazon polly
 # rospy for the subscriber
 import rospy
 import imutils
