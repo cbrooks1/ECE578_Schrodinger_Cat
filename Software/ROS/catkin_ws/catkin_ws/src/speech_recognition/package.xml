@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>voice_recognition</name>
+  <name>speech_recognition</name>
   <version>0.0.1</version>
-  <description>The voice_recognition package</description>
+  <description>The speech_recognition package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->
