@@ -8,22 +8,20 @@
 # Project Name: ECE578_Schrodinger_Cat
 
 Project Description
--Schrodinger Cat is one of the oldest robots in the lab. Schrodinger Cat is made up of a full body (head, arms, and legs controlled by servos) suspended above the ground by a base (which moves via a set of omni-wheels). The servos and motors are controlled via maestro controllers, controlled via and Arduino via a Raspberry Pi. We added a Raspberry Pi to the head of the robot to add vision, speech, and a screen to the robot.
+-Schrodinger Cat (what used to be the Einstein robot) is one of the oldest robots in the lab. Schrodinger Cat is made up of a full body (head, arms, and legs controlled by servos) suspended above the ground by a base (which moves via a set of omni-wheels). The servos and motors are controlled with an Arduino Uno microcontroller. We added a Raspberry Pi to the head of the robot to add vision, speech, and a screen to the robot.
 
 # Project Status:
--For project 2, we moved the robot software to ROS, and implemented a better version of speech to text/text to speech, as well as performing a play with Einstein robot.
+-We implemented text to speech, human/object recognition, and added a new LCD screen with a cat face base and cat faces using a raspberry pi 3. We also used an arduino board to update the servos and omni-wheels
 
 # Project Goals:
--Move robot software to a ROS system, and move over existing functionality
--Move text to speech capablities to a different system, implement speech to text
--Have robot perform play segment with another robot
 
+.
+.
 
 # List of Hardware and Software (Tools, Libraries etc) :
 
 Text to Speech
-Dialogflow
-Amazon Polly
+https://www.dexterindustries.com/howto/make-your-raspberry-pi-speak/
 
 Vision and Object Detection
 https://thecodacus.com/opencv-object-tracking-colour-detection-python/
@@ -55,26 +53,25 @@ Arduino Library for the Pololu Qiks - https://github.com/pololu/qik-arduino
 
 Media Links
 Videos of the robot can be found on the project GitHub page at:
-https://github.com/cbrooks1/ECE578_Schrodinger_Cat/tree/master/Videos
-THE NEW VIDEO OF THE ROBOT IS NAMED: RobotPlay_Clip
+https://github.com/cbrooks1/ECE578_Schrodinger_Cat/tree/master/Project1/Videos 
 
 Code Reference
-All of the code for this project can be found on the projects GitHub:
-https://github.com/cbrooks1/ECE578_Schrodinger_Cat/tree/master
+All of the code for this project (for both the Raspberry Pi and the Arduino) can be found on the projects GitHub:
+https://github.com/cbrooks1/ECE578_Schrodinger_Cat/tree/master/Project1 
 
+
+.
 
 # Project Team :
+-Text to Speech – Chelsea Brooks
 
-Text to Speech / Speech to Text – Chelsea Brooks
+-Face and Object Detection - Rakhee Bhojakar
 
-Face  and Robot Detection ROS node - Rakhee Bhojakar
+-Servos and Arduino Code - Jamie Williams
 
-ROS System, 3D Printing/Screen Face - Erik Fox
+-Omni Wheels -  Dhakshayini Koppad
 
-ROS node for Wheels, Servos, Arduino Code -  Dakshayani Koppad
-
-Servos, Arduino Code, Script Writing - Jamie Williams
-
+-3D Printing/Screen Face - Erik Fox
 
 
 
